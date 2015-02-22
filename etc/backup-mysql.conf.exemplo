@@ -1,0 +1,14 @@
+NOMEBKP="Banco de dados MySQL"
+TIPO="mysql"
+USUARIO="root"
+SENHA="senharootmysql"
+DIA=`date +%a`
+HOSTNAME=`hostname`
+ARQUIVO="000DESTINODOBACKUP000/${HOSTNAME}/bkp-${DIA}-${HOSTNAME}-mysql.sql"
+DATABASES=(
+	"all"
+)
+
+#APOS=(
+#	"cp $ARQUIVO /mnt/backup/${HOSTNAME}"
+#)

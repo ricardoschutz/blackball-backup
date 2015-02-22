@@ -1,0 +1,5 @@
+NOMEBKP="Pacotes instalados"
+TIPO="dpkg"
+DIA=`date +%a`
+HOSTNAME=`hostname`
+ARQUIVO="000DESTINODOBACKUP000/${HOSTNAME}/bkp-${DIA}-${HOSTNAME}-dpkg.txt"

@@ -1,0 +1,39 @@
+COR1="\e[01;32m"
+COR2="\e[01;31m"
+COR3="\e[0m"
+
+function splashBlackball {
+
+	echo
+	echo -e "\t==================================="
+	echo -e "\t=   ${COR1}B L A C K B A L L   -   T I${COR3}   ="
+	echo -e "\t==================================="
+	echo -e "\t:: ${COR2}$1${COR3}"
+	echo
+	
+}
+
+function pergunta_sn {
+
+	####################################
+	# Exemplo: 
+	#	pergunta_sn "Vai chover hoje?"
+	#
+	# Exemplo com if:
+	#	if `pergunta_sn "Vai chover hoje?"` ; then
+
+
+	while read -p "$1 [s/n] " RESPOSTA ; do
+		case "$RESPOSTA" in
+			s|S|y|Y)
+				return 0
+				;;
+			n|N)
+				return 1
+				;;
+		esac
+		echo
+		echo "--> Responda com \"S\" ou \"N\""
+	done
+
+}

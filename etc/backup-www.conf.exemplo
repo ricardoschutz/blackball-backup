@@ -1,0 +1,13 @@
+NOMEBKP="Websites"
+TIPO="tar"
+DIA=`date +%a`
+HOSTNAME=`hostname`
+ARQUIVO="000DESTINODOBACKUP000/${HOSTNAME}/bkp-${DIA}-${HOSTNAME}-www.tar.gz"
+DIRS=(
+	"/var/www/site.com/www"
+	"/var/www/site.com/wiki"
+)
+
+#APOS=(
+#        "cp $ARQUIVO /mnt/backup/${HOSTNAME}"
+#)

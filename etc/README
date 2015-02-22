@@ -1,0 +1,12 @@
+O sistema de backup lê todos os arquivos que iniciam com "backup-" e terminam com ".conf"
+
+Para adicionar uma configuração de backup, copie um dos arquivos de exemplo.
+
+O conteúdo do arquivo de configuração e as variáveis são auto explicativos.
+
+== EXECUTAR TODOS OS BACKUPS
+	backup.sh
+
+== EXECUTAR UM BACKUP ESPECÍFICO
+	backup.sh NomeDoArquivo.conf
+
