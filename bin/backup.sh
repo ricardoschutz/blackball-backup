@@ -293,6 +293,60 @@ function fazBackupMysql {
 
 }
 
+
+function validaBackupRsync {
+
+	echo -e -n "\t\tvariavel PARAMS ... "
+	[[ -n "$PARAMS" ]]
+	testa "validaBackupRsync: variavel PARAMS nao foi configurada"
+
+	echo -e -n "\t\torigem ... "
+	[[ -n "$ORIGEM" ]]
+	testa "validaBackupRsync: variavel ORIGEM nao foi configurada"
+	
+	echo -e -n "\t\tdestino ... "
+	[[ -n "$DESTINO" ]]
+	testa "validaBackupRsync: variavel DESTINO nao foi configurada"
+	
+}
+
+function fazBackupRsync {
+	
+	echo -e "\tTipo de backup: ${COR1}rsync${COR3}"
+	loga "Tipo: rsync"
+	
+	validaBackupRsync
+	
+	comandosPreBackup
+	
+	if [[ "$THISONEGOTERROR" == "no" ]]; then
+#                if [[ -n "$EXCLUDE" ]]; then
+#			EXCLUDECMD=""
+#			for (( j=0; j < ${#EXCLUDE[@]}; j++ )); do
+#				EXCLUDECMD="$EXCLUDECMD --exclude='${EXCLUDE}'"
+#			done
+#
+#			echo -e -n "\tExecutando backup rsync ... "
+#			executaComando rsync ${PARAMS} ${EXCLUDECMD} ${ORIGEM} ${DESTINO}
+#		else
+			echo -e -n "\tExecutando backup rsync ... "
+			executaComando rsync ${PARAMS} ${ORIGEM} ${DESTINO}
+#		fi
+
+		TAMARQBKP=`du -s ${DESTINO} | awk '{ print $1 }'`
+	else
+		loga "fazBackupTar: Backup nao executado devido a erros anteriores."
+	fi
+	
+	comandosPosBackup
+	
+	unset PARAMS
+	unset ORIGEM
+	unset DESTINO
+	unset EXCLUDE
+	
+}
+
 function executaBackup {
 	# Uso: executaBackup TIPO
 	
@@ -316,6 +370,9 @@ function executaBackup {
 			;;
 		"dpkg")
 			fazBackupDpkg
+			;;
+		"rsync")
+			fazBackupRsync
 			;;
 		*)
 			echo -e "${COR2}Tipo invalido: $1 ${COR3}"
