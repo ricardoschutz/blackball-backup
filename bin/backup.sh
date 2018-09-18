@@ -335,7 +335,7 @@ function fazBackupRsync {
 
 		TAMARQBKP=`du -s ${DESTINO} | awk '{ print $1 }'`
 	else
-		loga "fazBackupTar: Backup nao executado devido a erros anteriores."
+		loga "fazBackupRsync: Backup nao executado devido a erros anteriores."
 	fi
 	
 	comandosPosBackup
