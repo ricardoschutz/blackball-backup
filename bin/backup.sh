@@ -130,7 +130,7 @@ function fazBackupTar {
                 if [[ -n "$EXCLUDE" ]]; then
 			EXCLUDECMD=""
 			for (( j=0; j < ${#EXCLUDE[@]}; j++ )); do
-				EXCLUDECMD="$EXCLUDECMD --exclude='${EXCLUDE}'"
+				EXCLUDECMD="$EXCLUDECMD --exclude=${EXCLUDE[$j]}"
 			done
 
 			echo -e -n "\tExecutando backup tar ... "
